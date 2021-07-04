@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="p-5 text-center bg-light">
+            <h1 class="mb-3">Galery</h1>
+        </div>
+    </header>
+    <div class="container">
+        <form>
+            <div class="input-group">
+                {% csrf_token %}
+                <input type="file" class="form-control" id="inputLoadFile" name="path" aria-describedby="inputLoadFile" aria-label="Upload">
+                <button class="btn btn-outline-secondary" type="button" id="buttonLoadFile">Load</button>
+            </div>
+        </form>
+
+        <div class="row">
+            {% for path in images %}
+                <img src="{{ path }}" class="rounded float-start" width=200 height=200 alt="">
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <script>
+        const uploadFormButton = document.getElementById("buttonLoadFile");
+        uploadFormButton.addEventListener("click", loadFile);
+        const form = uploadFormButton.closest('form');
+
+        function loadFile () {
+            fetch("{% url "load_pic" %}", {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: new FormData(form),
+            })
+                .then((response) => {
+                    console.log(response);
+            })
+                .then((data) => {
+                    console.log(data);
+            });
+        }
+    </script>
+</body>
+</html>
