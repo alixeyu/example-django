@@ -1,0 +1,10 @@
+# django media
+media/
+
+# python venv
+.venv/
+venv/
+
+# DB
+*.sqlite3
+*.db
