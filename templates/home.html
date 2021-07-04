@@ -13,7 +13,7 @@
         </div>
     </header>
     <div class="container">
-        <form>
+        <form autocomplete="off">
             <div class="input-group">
                 {% csrf_token %}
                 <input type="file" class="form-control" id="inputLoadFile" name="path" aria-describedby="inputLoadFile" aria-label="Upload">
@@ -22,8 +22,8 @@
         </form>
 
         <div class="row">
-            {% for path in images %}
-                <img src="{{ path }}" class="rounded float-start" width=200 height=200 alt="">
+            {% for image in images %}
+                <img src="{{ image.path.url }}" class="rounded float-start w-25 mx-auto" alt="">
             {% endfor %}
         </div>
     </div>
