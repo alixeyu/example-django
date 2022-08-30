@@ -1,9 +1,13 @@
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views.generic.edit import FormView
 
 from .forms import PictureForm
 from .models import Picture
 
+
+def test(request):
+    return JsonResponse(status=200, data={"message": "Hello, world!"})
 
 def home(request):
     context = {}
