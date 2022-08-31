@@ -1,7 +1,7 @@
 FROM python:3
 ENV PYTHONENVBUFFERED=1
 
-COPY ../requirements.txt .
+COPY ./requirements.txt /web/
 
 WORKDIR /web
 RUN pip install --upgrade pip && pip install -r requirements.txt
