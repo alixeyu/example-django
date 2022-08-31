@@ -9,4 +9,4 @@ COPY ./ /web/
 
 RUN chmod +x entrypoint.sh
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/web/entrypoint.sh"]
