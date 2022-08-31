@@ -7,4 +7,6 @@ WORKDIR /web
 RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY ./ /web/
 
-ENTRYPOINT ["python", "manage.py", "runserver"]
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["entrypoint.sh"]
