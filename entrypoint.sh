@@ -1,3 +1,3 @@
 #!/bin/sh
 
-gunicorn website.wsgi:application
+gunicorn website.wsgi:application --daemon
